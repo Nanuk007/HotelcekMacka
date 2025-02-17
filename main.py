@@ -4,20 +4,23 @@ from flask import render_template, url_for, redirect, request, flash
 # from forms import PridajClanokFormular
 # from flask_login import LoginManager, login_user, logout_user, login_required, UserMixin
 # from forms import RegistrationForm, LoginForm
-# from models import Clanok, db, User
+from models import db, Admin, Client
 
 app = Flask(__name__)
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///clanky.db'
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# db.init_app(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hotelcek.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
 
 app.secret_key = 'macak'
 
 @app.route('/')
 def home():
-    flash('toto je skuska')
     return render_template('index.html')
+
+@app.route('/admin/login')
+def admin(id):
+    return render_template('admin-log.html', id=id)
 
 # @app.route('/clanky')
 # def clanky():
@@ -106,5 +109,5 @@ def home():
 
 #     return render_template('login.html', form=form)
 
-# with app.app_context():
-#     db.create_all()
+with app.app_context():
+    db.create_all()

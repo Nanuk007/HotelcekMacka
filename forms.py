@@ -1,6 +1,6 @@
-# from flask_wtf import FlaskForm
-# from wtforms import StringField, TextAreaField, SubmitField, PasswordField
-# from wtforms.validators import DataRequired, Email, EqualTo
+from flask_wtf import FlaskForm
+from wtforms import StringField, TextAreaField, SubmitField, PasswordField
+from wtforms.validators import DataRequired, Email, EqualTo
 
 # class PridajClanokFormular(FlaskForm):
 #     titulka = StringField('Názov článku', validators=[DataRequired()])
@@ -14,7 +14,7 @@
 #     password_confirm = PasswordField('Potvrďte heslo', validators=[DataRequired(), EqualTo('password')])
 #     submit = SubmitField('Registrovať')
 
-# class LoginForm(FlaskForm):
-#     email = StringField('Email', validators=[DataRequired(), Email()])
-#     password = PasswordField('Heslo', validators=[DataRequired()])
-#     submit = SubmitField('Prihlásiť sa')
+class AdminLog(FlaskForm):
+    adminID = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Heslo', validators=[DataRequired()])
+    submit = SubmitField('Log In')
