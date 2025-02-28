@@ -1,9 +1,27 @@
-{% extends '_base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-<div class="article-detail">
-    <h2>Vitajte</h2>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut vel, modi perspiciatis possimus, nam tempore totam
-        veritatis quod maxime minus quos repellendus. Voluptatem tempore, ducimus iure hic quidem corporis officiis.</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container-log-reg">
+        <header>
+            <h1>Zochova blog</h1>
+        </header>
+        <div class="article-detail">
+            <form method="post" class="register-login">
+                {{ form.hidden_tag() }}
+                {{ form.adminID.label }} 
+                {{ form.submit() }}
+            </form>
+        </div>
     </div>
-{% endblock %}
+    <a href="{{ url_for('logout') }}">Odhlásiť sa</a>
+</body>
+
+</html>

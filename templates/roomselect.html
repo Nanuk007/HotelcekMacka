@@ -6,4 +6,10 @@
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut vel, modi perspiciatis possimus, nam tempore totam
         veritatis quod maxime minus quos repellendus. Voluptatem tempore, ducimus iure hic quidem corporis officiis.</p>
     </div>
+    <div class="article-detail">
+        <form method="post" class="register-login">
+            {{ form.hidden_tag() }}
+            {{ form.email.label }} <br> {{ form.email() }}
+
+    
 {% endblock %}

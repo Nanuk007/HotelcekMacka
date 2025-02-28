@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zochova Blog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Zochova blog</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/">Domov</a></li>
+            <li><a href="/register">Články</a></li>
+            <li><a href="/onas">O nás</a></li>
+            <li><a href="/roomselect">Profil</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+            <div class="flash-message {{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2025 Zochova blog | Všetky práva vyhradené.</p>
+    </footer>
+    <script>
+        // Automatické skrytie a odstránenie všetkých flash správ
+        setTimeout(() => {
+            const flashMessages = document.querySelectorAll('.flash-message'); // Vyber všetky flash správy
+            flashMessages.forEach((flashMessage) => {
+                flashMessage.classList.add('hide'); // Pridaj triedu na animáciu
+                flashMessage.addEventListener('transitionend', () => {
+                    flashMessage.remove(); // Odstráň element po animácii
+                });
+            });
+        }, 3000); // Po 3 sekundách
+
+    </script>
+
+</body>
+
+</html>
