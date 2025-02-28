@@ -4,23 +4,30 @@ from flask_login import UserMixin
 
 db = SQLAlchemy()
 
-class Clanok(db.Model):
+# class Clanok(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     nazov = db.Column(db.String(100), nullable=False)
+#     obsah = db.Column(db.Text, nullable=False)
+
+#     def __repr__(self):
+#         return f'Článok: {self.nazov}'
+
+
+class User(db.Model,UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    nazov = db.Column(db.String(100), nullable=False)
-    obsah = db.Column(db.Text, nullable=False)
-
-    def __repr__(self):
-        return f'Článok: {self.nazov}'
-
-
-class User(UserMixin, db.Model):
+    first_name = db.Column(db.String(50))
+    last_name = db.Column(db.String(50))
+    cat_name = db.Column(db.String(50))
+    telephone = db.Column(db.String(15))
+    email = db.Column(db.String(100))
+    from_date = db.Column(db.Date)
+    to_date = db.Column(db.Date)
+    room = db.Column(db.String(50))
+    
+class Admin(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128), nullable=False)
+    AID = db.Column(db.String(150), unique=True, nullable=False)  # AdminID as plain text
 
-    def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
-
-    def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
+    def check_password(self, admin_id):
+        """Check if the provided admin_id matches the stored AdminID"""
+        return self.AID == admin_id  # Direct comparison without hashing

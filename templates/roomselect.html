@@ -1,15 +1,65 @@
-{% extends '_base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-<div class="article-detail">
-    <h2>Vitajte</h2>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut vel, modi perspiciatis possimus, nam tempore totam
-        veritatis quod maxime minus quos repellendus. Voluptatem tempore, ducimus iure hic quidem corporis officiis.</p>
-    </div>
-    <div class="article-detail">
-        <form method="post" class="register-login">
-            {{ form.hidden_tag() }}
-            {{ form.email.label }} <br> {{ form.email() }}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
 
-    
-{% endblock %}
+<body>
+    <h1>Register Your Cat</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+          {% for category, msg in messages %}
+            <li class="{{ category }}">{{ msg }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('register') }}">
+        {{ form.hidden_tag() }}
+
+        <p>
+            {{ form.first_name.label }}<br>
+            {{ form.first_name(size=30) }}
+        </p>
+        <p>
+            {{ form.last_name.label }}<br>
+            {{ form.last_name(size=30) }}
+        </p>
+        <p>
+            {{ form.cat_name.label }}<br>
+            {{ form.cat_name(size=30) }}
+        </p>
+        <p>
+            {{ form.telephone.label }}<br>
+            {{ form.telephone(size=30) }}
+        </p>
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=30) }}
+        </p>
+        <p>
+            {{ form.from_date.label }}<br>
+            {{ form.from_date() }}
+        </p>
+        <p>
+            {{ form.to_date.label }}<br>
+            {{ form.to_date() }}
+        </p>
+        <p>
+            {{ form.room.label }}<br>
+            {{ form.room() }}
+        </p>
+
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+</body>
+</html>

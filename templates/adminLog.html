@@ -13,15 +13,23 @@
         <header>
             <h1>Zochova blog</h1>
         </header>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
         <div class="article-detail">
             <form method="post" class="register-login">
                 {{ form.hidden_tag() }}
-                {{ form.adminID.label }} 
+                {{ form.AID.label }} 
+                {{ form.AID() }}
                 {{ form.submit() }}
             </form>
         </div>
     </div>
-    <a href="{{ url_for('logout') }}">Odhlásiť sa</a>
 </body>
-
-</html>
