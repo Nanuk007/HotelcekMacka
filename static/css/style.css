@@ -115,13 +115,26 @@ footer {
 }
 .PositionOnMap {
     display: flex;
-    justify-content: left; 
+    justify-content: center; 
 }
 
 .PositionOnMap iframe {
     width: 100%;
     height: 100%;
     border: none;
+}
+.PositionOnMapInfo{
+    display: flex;
+    align-items: center;
+    padding: 0;
+    gap: 20px;
+}
+.PositionOnMapInfo li{
+    display: flex;
+    justify-items: left;
+    text-decoration: none;
+    list-style-type: none;
+    color: black;
 }
 .prev { left: 10px; }
 .next { right: 10px; }
