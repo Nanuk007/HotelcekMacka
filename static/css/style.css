@@ -1,341 +1,127 @@
-* {
-    box-sizing: border-box;
+
+body {
+    font-family: 'Helvetica', sans-serif;
+    background-color: #f4e1d2; /* Light cappuccino */
+    color: black; /* Darker cappuccino 3e2c41*/
     margin: 0;
     padding: 0;
 }
-body {
-    font-family: 'Helvetica Neue', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-    margin: 0;
-}
 header {
-    background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    background-color: #d2b09c; /* Medium cappuccino */
+    position: static;
     text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-header h1 {
-    margin: 0;
-    font-size: 2.5em;
-    color: #007BFF;
-}
-nav {
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    padding: 15px 0;
-    border-bottom: 1px solid #ddd;
+    padding: 0 20;
 }
 nav ul {
-    list-style-type: none;
+    list-style: none;
     display: flex;
+    justify-content: center;
+    padding: 0;
     gap: 20px;
 }
-nav ul li {
-    margin: 0;
-}
-nav ul li a {
-    color: #007BFF;
-    text-decoration: none;
-    font-size: 1.1em;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease;
-}
-nav ul li a:hover {
-    background-color: #007BFF;
+.TopButtons li a{
     color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 10px;
     border-radius: 5px;
+    background-color: #8b5e3b;
+    transition: 2s;
+}
+.TopButtons li:hover {
+    transform: rotate(-10deg);
+    background-color: #6b3f2c;
 }
 main {
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 40px;
+    text-align: center;
 }
-
-.article-preview {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-}
-.article-preview h2 {
-    margin-bottom: 10px;
-    font-size: 1.8em;
-    color: black;
-}
-.article-preview p {
-    margin-bottom: 15px;
-    color: #666;
-}
-
-.detail_clanku_click {
-    text-decoration: none;
-}
-
-.article-preview:hover {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    transition: 0.3s;
-}
-
-.article-preview:hover h2 {
-    color: #007BFF;
-    transition: 0.3s;
-}
-
-.article-preview-top {
-    background-color: #007BFF;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-}
-
-.article-preview-top h2 {
-    margin-bottom: 10px;
-    font-size: 1.8em;
-}
-.article-preview-top p {
-    margin-bottom: 15px;
-}
-
-.article-detail {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin: 30px auto;
-    max-width: 960px;
-}
-
-.article-detail p {
-    text-align: justify;
-    margin-top: 20px;
-}
-
-.article-detail h1 {
-    font-size: 2.5em;
-    color: #333;
-}
-
-.article-detail p {
-    font-size: 1.2em;
-    color: #666;
-}
-
-.article-detail a {
-    display: inline-block;
-    margin-top: 20px;
-    text-decoration: none;
-    color: #007bff;
-}
-
 footer {
-    background-color: #007BFF;
+    background-color: #3e2c41;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 10px;
     position: fixed;
-    width: 100%;
     bottom: 0;
-    font-size: 0.9em;
-}
-footer p {
-    margin: 0;
-}
+    width: 100%;
 
-.button {
-    background-color: #007BFF;
-    color: white;
-    text-decoration: none;
-    font-size: 1.1em;
-    padding: 10px 15px;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
 }
-.button:hover {
-    background-color: white;
-    color: #007BFF;
-    border-radius: 5px;
-    border: 1px solid #007BFF;
+.logo{
+    width: auto;
+    height: 70px;
 }
-
-.article-header {
+.name-web{
+    display: flex;
+    align-items: center;
+}
+.name-page{
+    padding-left: 10px;
+    font-size: larger;
+    font-family: Brush Script MT, Brush Script Std, cursive ;
+    font-size: 30px;
+}
+.top-bar{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.article-detail .edit-button {
-    text-decoration: none; 
-    padding: 5px 10px;
-    background-color: #007bff; 
+.image-slider {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 500px auto 100%;
+    position: relative;
+    border-radius: 25px;
+}
+.slider-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    
+}
+.slider-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures images fit without distortion */
+    flex-shrink: 0;
+    
+}
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-60%);
+    background: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    border-radius: 5px; 
-    font-size: 1rem;
-    margin: 10px 0;
-}
-
-.edit-button:hover {
-    background-color: #0056b3;
+    padding: 10px;
     cursor: pointer;
+    border-radius: 25px;
 }
-
-
-
-.add-article-button {
-    background-color: #007bff; 
-    padding: 5px 10px;
-    border-radius: 5px; 
-    font-size: 1rem;
-    margin-bottom: 25px;
-    width: fit-content;
+.Heads{
+    font-family: 'Monaco', sans-serif;
 }
-
-.add-article-button a {
-    text-decoration: none; 
-    color: white;
+.AboutUs{
+    padding: 10px 0;
+    text-align: left;
 }
-
-.add-article-button:hover  {
-    background-color: #0056b3;
-    cursor: pointer;
+.PositionOnMapCus{
+    width: 45vw; 
+    max-width: 350px; 
+    aspect-ratio: 1 / 1; 
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
-
-/* uprava formularu - clanky */
-form {
-    margin: 20px;
-}
-
-form input[type=text], textarea {
-    width: 100%;
-    margin: 10px 0;
-    font-size: 1rem;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-form input[type=text] {
-    font-weight: bolder;
-    font-size: 1.2rem;
-}
-
-form label {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-/* dizajn register-prihlasenie */
-
-.container-log-reg {
-    height: 100vh;
+.PositionOnMap {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: left; 
 }
 
-.container-log-reg .article-detail {
-    width: 400px;
-}
-
-.container-log-reg header {
-    background-color: rgba(0, 0, 0, 0.0);
-    box-shadow: none;
-    padding: 0;
-}
-
-.register-login input[type=text], input[type=password] {
+.PositionOnMap iframe {
     width: 100%;
-    font-size: 1rem;
-    margin: 0;
-    margin-bottom: 10px;
+    height: 100%;
+    border: none;
 }
-
-.register-login label {
-    font-size: 1rem;
-}
-
-.register-login input[type=submit] {
-    background-color: #007bff; 
-    padding: 5px 10px;
-    border-radius: 5px; 
-    font-size: 1rem;
-    margin-bottom: 25px;
-    width: 100%;
-    color: white;
-    border: 0;
-    margin-top: 15px;
-}
-
-.register-login input[type=submit]:hover {
-    background-color: #0056b3;
-    cursor: pointer;
-}
-
-
-/* flash spravy */
-.flash-messages {
-    max-width: 960px;
-    margin: 20px auto;
-    padding: 0;
-}
-
-.flash-message {
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 15px;
-    margin: 20px 0;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: opacity 0.5s ease, margin 0.5s ease, padding 0.5s ease;
-    opacity: 1;
-}
-
-.flash-message.hide {
-    opacity: 0;
-    margin: 0;
-    padding: 0;
-}
-
-
-.flash-message.success {
-    background-color: #28a745; /* zelená pre úspech */
-}
-
-.flash-message.error {
-    background-color: #dc3545; /* červená pre chyby */
-}
-
-.flash-message.warning {
-    background-color: #ffc107; /* žltá pre varovanie */
-    color: #212529; /* tmavý text pre kontrast */
-}
-
-.flash-message.info {
-    background-color: #17a2b8; /* modrá pre informácie */
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeOut {
-    to {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-}
+.prev { left: 10px; }
+.next { right: 10px; }

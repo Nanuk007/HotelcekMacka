@@ -1,65 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-
-<body>
-    <h1>Register Your Cat</h1>
-
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        <ul>
-          {% for category, msg in messages %}
-            <li class="{{ category }}">{{ msg }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    {% endwith %}
-
-    <form method="POST" action="{{ url_for('register') }}">
-        {{ form.hidden_tag() }}
-
-        <p>
-            {{ form.first_name.label }}<br>
-            {{ form.first_name(size=30) }}
-        </p>
-        <p>
-            {{ form.last_name.label }}<br>
-            {{ form.last_name(size=30) }}
-        </p>
-        <p>
-            {{ form.cat_name.label }}<br>
-            {{ form.cat_name(size=30) }}
-        </p>
-        <p>
-            {{ form.telephone.label }}<br>
-            {{ form.telephone(size=30) }}
-        </p>
-        <p>
-            {{ form.email.label }}<br>
-            {{ form.email(size=30) }}
-        </p>
-        <p>
-            {{ form.from_date.label }}<br>
-            {{ form.from_date() }}
-        </p>
-        <p>
-            {{ form.to_date.label }}<br>
-            {{ form.to_date() }}
-        </p>
-        <p>
-            {{ form.room.label }}<br>
-            {{ form.room() }}
-        </p>
-
-        <p>
-            {{ form.submit() }}
-        </p>
-    </form>
-</body>
-</html>
+{% extends '_base.html' %}
+{% block content %}
+<h2>Book Your Stay</h2>
+<form method="POST" action="{{ url_for('register') }}" class="booking-form">
+    {{ form.hidden_tag() }}
+    <p>{{ form.first_name.label }} {{ form.first_name() }}</p>
+    <p>{{ form.last_name.label }} {{ form.last_name() }}</p>
+    <p>{{ form.cat_name.label }} {{ form.cat_name() }}</p>
+    <p>{{ form.telephone.label }} {{ form.telephone() }}</p>
+    <p>{{ form.email.label }} {{ form.email() }}</p>
+    <p>{{ form.from_date.label }} {{ form.from_date() }}</p>
+    <p>{{ form.to_date.label }} {{ form.to_date() }}</p>
+    <p>{{ form.room.label }} {{ form.room() }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}

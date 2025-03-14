@@ -1,9 +1,43 @@
 {% extends '_base.html' %}
-
 {% block content %}
-<div class="article-detail">
-    <h2>Vitajte</h2>
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut vel, modi perspiciatis possimus, nam tempore totam
-        veritatis quod maxime minus quos repellendus. Voluptatem tempore, ducimus iure hic quidem corporis officiis.</p>
-    </div>
+
+<body>
+    <h1 class="TopText01 Heads">Welcome to Our Hotel</h1>
+    <main>
+        <!-- Image Slider Section -->
+        <div class="image-slider">
+            <div class="slider-container">
+                <img src="{{ url_for('static', filename='css/imgs/Designer (1).jpeg') }}" alt="Image 1">
+                <img src="{{ url_for('static', filename='css/imgs/Designer (2).jpeg') }}" alt="Image 2">
+                <img src="{{ url_for('static', filename='css/imgs/Designer (3).jpeg') }}" alt="Image 3">
+                <img src="{{ url_for('static', filename='css/imgs/Designer.jpeg') }}" alt="Image 4">
+            </div>
+            <button class="slider-btn prev" onclick="prevSlide()">&#10094;</button>
+            <button class="slider-btn next" onclick="nextSlide()">&#10095;</button>
+        </div>
+        <div class="AboutUs">
+            <h2 class="Heads">About Us</h2>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quam reprehenderit sequi fugiat ea quas
+            recusandae, porro mollitia soluta dolore rerum eligendi laborum sint consequuntur numquam voluptatibus
+            deserunt obcaecati sit!
+        </div>
+        <div >
+            <h2>Where To Find Us</h2>
+            <div class="PositionOnMap">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d170026.29637284225!2d16.924266815185543!3d48.25165514645406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c91b43e453df3%3A0x902e67efad2e3d0f!2sHotel%20pre%20ma%C4%8Dky!5e0!3m2!1sen!2ssk!4v1741974092498!5m2!1sen!2ssk"  
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="PositionOnMapCus">
+                </iframe>
+                
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Hotel Website. All rights reserved.</p>
+    </footer>
+</body>
 {% endblock %}
