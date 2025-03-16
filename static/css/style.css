@@ -199,3 +199,31 @@ footer {
 }
 .prev { left: 10px; }
 .next { right: 10px; }
+
+
+
+
+.flash-messages {
+    margin: 10px 0;
+}
+
+.flash-message {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.flash-message.success {
+    background-color: #4CAF50; /* Green for success */
+    color: white;
+}
+
+.flash-message.info {
+    background-color: #2196F3; /* Blue for information */
+    color: white;
+}
+
+.flash-message.error {
+    background-color: #f44336; /* Red for errors */
+    color: white;
+}

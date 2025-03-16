@@ -1,12 +1,11 @@
-
-from flask import Flask
-from flask import render_template, url_for, redirect, request, flash
+from flask import Flask, render_template, url_for, redirect, request, flash, Response
 from flask_login import LoginManager, login_user, login_required
-from forms import RegistrationForm, AdminForm ,EmailForm 
-from models import db, User , Admin , EmailReview
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
+from forms import RegistrationForm, AdminForm, EmailForm
+from models import db, User, Admin, EmailReview
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+from flask import send_file
+import io
 
 app = Flask(__name__)
 
@@ -84,10 +83,45 @@ def register():
         )
         db.session.add(new_user)
         db.session.commit()
-        flash('Reservation successful!', 'success')
+        
+        # Regular flash message for reservation success
+        flash('Vymňauknuté', 'success')
+
+        # Important flash message asking about the PDF generation
+        flash('Chcete PDF fakturku', 'info')
+
         return redirect(url_for('register'))
+    
     return render_template('roomselect.html', form=form)
 
+@app.route('/generate_pdf', methods=['GET', 'POST'])
+def generate_pdf():
+    # Retrieve the most recent reservation (last added user)
+    latest_user = User.query.order_by(User.id.desc()).first()  # Get the most recent user
+
+    if latest_user:
+        # Create a PDF in memory using reportlab
+        pdf_file = io.BytesIO()
+        c = canvas.Canvas(pdf_file, pagesize=letter)
+        c.setFont("Helvetica", 12)
+
+        # Write the PDF content (custom message + reservation details)
+        c.drawString(100, 750, f"Milá/ý pán/i {latest_user.first_name} {latest_user.last_name},")
+        c.drawString(100, 735, "dovoľujeme si vám oznámiť, že vaša rezervácia bola zaevidovaná v systéme.")
+        c.drawString(100, 720, "P.S. nechať nám ju tu nafurt. HMMMMMMMMMM?")
+
+        # Save the PDF to the in-memory file
+        c.save()
+
+        # Go to the beginning of the BytesIO buffer
+        pdf_file.seek(0)
+
+        # Send the generated PDF file to the user as a downloadable response
+        return send_file(pdf_file, as_attachment=True, download_name="reservation.pdf", mimetype="application/pdf")
+    else:
+        flash("No reservations found.", "error")
+        return redirect(url_for('home'))
+    
 
 with app.app_context():
     db.create_all()

@@ -21,20 +21,36 @@
             </nav>
         </nav>
     </header>
+
     <main>
         {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        <div class="flash-messages">
-            {% for category, message in messages %}
-            <div class="flash-message {{ category }}">
-                {{ message }}
-            </div>
-            {% endfor %}
-        </div>
-        {% endif %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">
+                            {{ message }}
+                            {% if category == 'info' %}
+                                <!-- This is where the PDF question appears -->
+                                <form method="POST" action="{{ url_for('generate_pdf') }}" style="display:inline;">
+                                    <button type="submit" id="yes-button">Yes</button>
+                                </form>
+                                <button id="no-button" onclick="redirectToHome()">No</button>
+
+                                <script type="text/javascript">
+                                    function redirectToHome() {
+                                        window.location.href = "{{ url_for('home') }}";
+                                    }
+                                </script>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
         {% endwith %}
+
         {% block content %}{% endblock %}
     </main>
+
     <footer>
         <p>&copy; 2025 Cat's Hotel. All rights reserved.</p>
     </footer>
