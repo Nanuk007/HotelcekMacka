@@ -24,3 +24,8 @@ class RegistrationForm(FlaskForm):
 class AdminForm(FlaskForm):
     AID = PasswordField('Admin ID', validators=[DataRequired()])  # Using AdminID as password
     submit = SubmitField('Login')
+
+class EmailForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    review = TextAreaField('Review', validators=[DataRequired(), Length(min=10, max=1000)])
+    submit = SubmitField('Submit')

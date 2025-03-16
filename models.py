@@ -31,3 +31,8 @@ class Admin(db.Model, UserMixin):
     def check_password(self, admin_id):
         """Check if the provided admin_id matches the stored AdminID"""
         return self.AID == admin_id  # Direct comparison without hashing
+    
+class EmailReview(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), nullable=False, unique=True)
+    review = db.Column(db.Text, nullable=False)

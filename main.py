@@ -2,8 +2,8 @@
 from flask import Flask
 from flask import render_template, url_for, redirect, request, flash
 from flask_login import LoginManager, login_user, login_required
-from forms import RegistrationForm, AdminForm
-from models import db, User , Admin
+from forms import RegistrationForm, AdminForm ,EmailForm 
+from models import db, User , Admin , EmailReview
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -32,9 +32,19 @@ def load_user(user_id):
     admin = Admin.query.get(int(user_id))
     return admin  # Returns Admin if found, otherwise None
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template('index.html')
+    form = EmailForm()
+    if form.validate_on_submit():
+        new_review = EmailReview(email=form.email.data, review=form.review.data)
+        db.session.add(new_review)
+        db.session.commit()
+        flash('Vaša Review bola odoslaná a spokojne ignorovaná', 'success')  # Flash message
+
+        return redirect(url_for('home'))  # Redirect to clear form after submission
+
+    return render_template('index.html', form=form)  # No reviews passed
+
 
 @app.route('/adminview')
 @login_required
