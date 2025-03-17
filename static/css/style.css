@@ -1,5 +1,6 @@
 
 body {
+    height: 100vh;
     font-family: 'Helvetica', sans-serif;
     background-color: #f4e1d2; /* Light cappuccino */
     color: black; /* Darker cappuccino 3e2c41*/
@@ -33,7 +34,7 @@ nav ul {
     background-color: #6b3f2c;
 }
 main {
-    padding: 40px;
+    padding: 40px 100px;
     text-align: center;
 }
 footer {
@@ -69,8 +70,9 @@ footer {
 .image-slider {
     display: flex;
     overflow: hidden;
+    justify-items: center;
     width: 100%;
-    height: 500px auto 100%;
+    height: 500px;
     position: relative;
     border-radius: 25px;
 }
@@ -102,20 +104,24 @@ footer {
     font-family: 'Monaco', sans-serif;
 }
 .AboutUs{
-    padding: 10px 0;
     text-align: left;
 }
+.card{
+    padding: 40px;
+    margin: 50px 0px;
+    background-color: #d2b09c;
+    border-radius: 25px;
+}
 .PositionOnMapCus{
-    width: 45vw; 
-    max-width: 350px; 
-    aspect-ratio: 1 / 1; 
+    width: 800px; 
+    max-width: 400px; 
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 .PositionOnMap {
     display: flex;
-    justify-content: center; 
+    justify-content: space-around;
 }
 
 .PositionOnMap iframe {
@@ -138,13 +144,7 @@ footer {
 }
 
 .form {
-    width: 80vw;
-    max-width: 420px;
-    background-color: #d2b09c;
-    border-radius: 25px;
-    padding: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: left; /* Align text to the left */
+   
 }
 .form input, 
 .form select {
@@ -154,6 +154,16 @@ footer {
     margin-bottom: 10px;
     border: 1px solid #a07d68; /* Soft border */
     border-radius: 25px; /* Rounded edges */
+    background-color: #f7e7dc;
+    font-size: 16px;
+}
+.form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #a07d68;
+    border-radius: 25px;
     background-color: #f7e7dc;
     font-size: 16px;
 }
@@ -181,12 +191,21 @@ footer {
     margin-left: 10px;
     margin-right: 10px;
 }
-
-.book{
+.book-container{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px;
+}
+.book{
+
+    width: 80vw;
+    max-width: 420px;
+    background-color: #d2b09c;
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: left; /* Align text to the left */
 }
 #room-image-container {
     width: 40%;
@@ -206,23 +225,19 @@ footer {
 .flash-messages {
     margin: 10px 0;
 }
-
 .flash-message {
     padding: 10px;
     margin: 5px 0;
     border-radius: 5px;
 }
-
 .flash-message.success {
     background-color: #4CAF50; /* Green for success */
     color: white;
 }
-
 .flash-message.info {
     background-color: #2196F3; /* Blue for information */
     color: white;
 }
-
 .flash-message.error {
     background-color: #f44336; /* Red for errors */
     color: white;

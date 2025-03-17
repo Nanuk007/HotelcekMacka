@@ -15,15 +15,16 @@
             <button class="slider-btn prev" onclick="prevSlide()">&#10094;</button>
             <button class="slider-btn next" onclick="nextSlide()">&#10095;</button>
         </div>
-        <div class="AboutUs">
+        <div class="AboutUs card">
             <h2 class="Heads">About Us</h2>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quam reprehenderit sequi fugiat ea quas
-            recusandae, porro mollitia soluta dolore rerum eligendi laborum sint consequuntur numquam voluptatibus
-            deserunt obcaecati sit!
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quam reprehenderit sequi fugiat ea quas
+                recusandae, porro mollitia soluta dolore rerum eligendi laborum sint consequuntur numquam voluptatibus
+                deserunt obcaecati sit!
+            </p>
         </div>
         <div >
             <h2>Where To Find Us</h2>
-           <div class="PositionOnMap">
+           <div class="PositionOnMap card">
                 <div class="PositionOnMapCus">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d170026.29637284225!2d16.924266815185543!3d48.25165514645406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c91b43e453df3%3A0x902e67efad2e3d0f!2sHotel%20pre%20ma%C4%8Dky!5e0!3m2!1sen!2ssk!4v1741974092498!5m2!1sen!2ssk"  
@@ -34,13 +35,18 @@
                         class="PositionOnMapCus">
                     </iframe>
                 </div>
-                <div class="PositionOnMapInfo">
-                    <ul>
-                        <li><p>Phone : </p></li>
-                        <li><a class="Phone" href="#">0945 258 167</a></li>
-                        <li><p>E-mail : </p></li>
-                        <li><a class="E-mail" href="#">mnau@machotel.com</a></li>
-                    </ul>
+                <div class="">
+                    <form method="POST" action="{{ url_for('home') }}" class="form">
+                        {{ form.hidden_tag() }}
+                        
+                        <label for="email">Email:</label>
+                        {{ form.email(class="form-control", id="email") }}
+                    
+                        <label for="review">Review:</label>
+                        {{ form.review(class="form-control", id="review") }}
+                    
+                        {{ form.submit(class="form-control") }}
+                    </form>  
                 </div>
             </div>
         </div>
