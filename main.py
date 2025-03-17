@@ -38,7 +38,7 @@ def home():
         new_review = EmailReview(email=form.email.data, review=form.review.data)
         db.session.add(new_review)
         db.session.commit()
-        flash('Vaša Review bola odoslaná a spokojne ignorovaná', 'success')  # Flash message
+        flash('Vaša Review bola odoslaná a spokojne "ignorovaná"', 'success')  # Flash message
 
         return redirect(url_for('home'))  # Redirect to clear form after submission
 
@@ -60,7 +60,7 @@ def admin():
         if admin:
             # Check if the admin ID matches (here, you're directly comparing AID, no need to hash)
             login_user(admin)
-            flash('Vošiel si', "success")
+            flash('Vošiel si do macacej rite', "success")
             return redirect(url_for('adminview'))
         else:
             flash('ZLÉ ADMIN ID', 'error')  # Incorrect Admin ID
