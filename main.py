@@ -107,8 +107,8 @@ def generate_pdf():
 
         # Write the PDF content (custom message + reservation details)
         c.drawString(100, 750, f"Milá/ý pán/i {latest_user.first_name} {latest_user.last_name},")
-        c.drawString(100, 735, "dovoľujeme si vám oznámiť, že vaša rezervácia bola zaevidovaná v systéme.")
-        c.drawString(100, 720, "P.S. nechať nám ju tu nafurt. HMMMMMMMMMM?")
+        c.drawString(100, 735, "dovolujeme si vám oznámit, že vaša rezervácia bola zaevidovaná v systéme.")
+        c.drawString(100, 720, "P.S. nechat nám ju tu nafurt. HMMMMMMMMMM?")
 
         # Save the PDF to the in-memory file
         c.save()
